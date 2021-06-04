@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service("iUserService")
@@ -168,4 +169,15 @@ public class UserServiceImpl implements IUserService {
         user.setPassword(StringUtils.EMPTY);
         return ServiceResponse.createBySuccess(user);
     }
+
+    // backend
+    public ServiceResponse<User>checkAdminRole(User user){
+        // Todo:
+        if(user != null && user.getRole() == Const.Role.ROLE_ADMIN){
+            return ServiceResponse.createBySuccess();
+        }
+        return ServiceResponse.createByError();
+    }
+
+
 }
