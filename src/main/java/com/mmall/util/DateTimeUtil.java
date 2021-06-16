@@ -38,6 +38,6 @@ public class DateTimeUtil {
 
     public static void main(String[] args) {
         System.out.println(DateTimeUtil.dateToStr(new Date(),""));
-        System.out.println(DateTimeUtil.strToDate("2021=06-03 08:55:30","yyyy-MM-dd HH:mm:ss"));
+        System.out.println(DateTimeUtil.strToDate("2021-06-03 08:55:30","yyyy-MM-dd HH:mm:ss"));
     }
 }

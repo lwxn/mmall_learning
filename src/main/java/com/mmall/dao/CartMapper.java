@@ -1,7 +1,10 @@
 package com.mmall.dao;
 
 import com.mmall.pojo.Cart;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 public interface CartMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,5 +19,17 @@ public interface CartMapper {
 
     int updateByPrimaryKey(Cart record);
 
-    Cart selectByUserIdProductId(@RequestParam(value = "userId") Integer userId, @RequestParam(value = "productId") Integer productId);
+    Cart selectByUserIdProductId(@Param(value = "userId") Integer userId, @Param(value = "productId") Integer productId);
+
+    List<Cart> selectCartByUserId(Integer userId);
+
+    int selectCartProductCheckedStatusByUserId(Integer userId);
+
+    int deleteByUserIdAndProductId(@Param(value = "userId") Integer userId, @Param(value = "productIdList") List<String> productIdList);
+
+    int checkedOrUncheckedAllProduct(@Param(value = "userId") Integer userId,@Param(value = "productId") Integer productId, @Param(value = "checked") Integer checked);
+
+    int selectCartProductCount(Integer userId);
+
+    List<Cart> selectCheckedCartByUserId(Integer userId);
 }
